@@ -1,0 +1,42 @@
+---
+title: "Rwanda3_data_analysis"
+author: "Elliot Meador"
+date: "19 April 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r,warning=FALSE,message=FALSE,echo=FALSE}
+library(tidyverse)
+library(visNetwork)
+source('dplyr_helpers.R')
+source('functions.general.R')
+source('coop_networks.R')
+load('foxtrot.RData')
+```
+
+## Findings {.tabset .tabset-fade}
+
+
+
+### Maize Cooperatives
+
+
+```{r,results='asis',warning=FALSE,message=FALSE,echo=FALSE}
+coop_visNetworks_ls$Maize_1
+coop_visNetworks_ls$Maize_2
+
+```
+
+### Dairy Cooperatives
+```{r,results='asis',warning=FALSE,message=FALSE,echo=FALSE}
+coop_visNetworks_ls$Dairy_1
+coop_visNetworks_ls$Dairy_2
+coop_visNetworks_ls$Dairy_3
+coop_visNetworks_ls$Dairy_4
+
+```

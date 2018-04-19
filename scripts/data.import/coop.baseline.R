@@ -1,3 +1,7 @@
+dir.create('scripts/david.correspondence/')
+file.create('scripts/david.correspondence/coop_vis.R')
+file.edit('scripts/david.correspondence/coop_vis.R')
+
 
 # Data import -------------------------------------------------------------
 library(tidyverse)
@@ -53,7 +57,7 @@ coop_1 <- tango %>%
     na.omit(.)
 # Coop_1 ------------------------------------------------------------------
 
-
+names(coop_1)
 df_coop_1 <- coop_1 %>% 
     select(type,person1,person2) %>% 
     gather(key,value,-type) %>% 
@@ -72,7 +76,7 @@ nodes <- g_data$nodes %>%
 edges <- g_data$edges %>% 
     dplyr::as_data_frame()
 
-nodes <- left_join(nodes,coop_1)
+# nodes <- left_join(nodes,coop_1)
 
 
 # attributes --------------------------------------------------------------

@@ -55,11 +55,15 @@ clean <- function(x){
   x <- x %>% str_to_title() # makes title case
   x <- x %>% str_trim()# trims off whitespace
   x <- gsub('\\.',' ',x)#removes periods
-  x <- gsub('\\,',' ',x)#removes periods
-    x <- x %>% str_to_title()
-  x <- x %>% str_trim()
-  x <- gsub('\\.','',x)
-  x <- gsub('\\,','',x)
+  x <- gsub('\\,',' ',x)#removes commas
+  x
+}
+
+clean_all <- function(x){
+  x <- x %>% str_to_lower() # makes tolower case
+  x <- x %>% str_trim()# trims off whitespace
+  x <- gsub("[^A-Za-z0-9]",' ',x) # keeps only alpha_numeric
+as
   x
 }
 
@@ -158,14 +162,24 @@ factorise <- function(x){
 
 
 identicator <- function(x){
-  name <- x
   
-  for ( i in seq_along(name)){
+  for ( i in seq_along(x)){
     
-    name <- ifelse(agrepl(name[[i]],name),name[[i]],name)
+    x <- ifelse(agrepl(x[[i]],x),x[[i]],x)
     
   }
-  name  ###
+  x  ###
+}
+
+
+identicator_ii <- function(x = match,y = matched,z = .1){
+    
+    for ( i in seq_along(x)){
+        
+        y <- ifelse(agrepl(x[[i]],y,max.distance = z),x[[i]],y)
+        
+    }
+    y  ###
 }
 
 # dplyr helpers

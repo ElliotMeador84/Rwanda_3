@@ -2,11 +2,14 @@ dir.create('scripts/david.correspondence/')
 file.create('scripts/david.correspondence/coop_vis.R')
 file.edit('scripts/david.correspondence/coop_vis.R')
 
+attach(df_base.line)
 
 # Data import -------------------------------------------------------------
 library(tidyverse)
 library(igraph)
+source('functions/functions.general.R')
 library(visNetwork)
+
 ## import data from SPSS file
 setwd('/R/')
 df_base.line <- haven::read_spss('Rwanda_3/Coop_and_Union_Baseline/Coops DataBaseline2017_18SocialCapitalStudy8_19_17.sav')
@@ -40,10 +43,10 @@ tango <- df_base.line %>%
     mutate(gender = ifelse(gender == 0,'Female','Male')) %>%
     mutate_if(is.character,clean)
 ##=====
-# tango %>% glimpse()
-# df_base.line %>% View()
+ tango %>% glimpse()
+ df_base.line %>% View()
 
-# lead_recodes <- names(tango)[c(5,6,7,8)]
+lead_recodes <- names(tango)[c(5,6,7,8)]
 coop_1 <- tango %>% 
     filter(coop == '6') %>% 
     mutate_at(lead_recodes,funs(ifelse(is.na(.),'',.))) %>% 
